@@ -1,0 +1,9 @@
+.build/
+.DS_Store
+xcuserdata/
+dist/
+DerivedData/
+*.xcuserstate
+__pycache__/
+TestFiles/
+TestFolders/
