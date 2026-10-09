@@ -113,9 +113,9 @@ swift Tests/LocalizationChecks.swift .build/Build/Products/Debug/PixelTransfer.a
 
 1. Откройте `PixelTransfer.xcodeproj` из этой папки.
 2. Выберите Integrate → New Git Repository… и создайте репозиторий в корне проекта, рядом с `.xcodeproj` и README.
-3. Выберите Integrate → Commit…, проверьте список файлов и сделайте первый коммит, например `Initial PixelTransfer version`. `.gitignore` исключает сборки, персональные настройки Xcode, DMG и временные материалы проверок. Общую схему, ресурсы приложения, вложенные библиотеки и лицензии нужно сохранить в репозитории.
-4. В Xcode → Settings… → Accounts добавьте GitHub (+ → GitHub) и выполните показанные шаги входа.
-5. В Source Control navigator нажмите правой кнопкой на репозиторий PixelTransfer и выберите Create PixelTransfer Remote…. Выберите GitHub, имя `PixelTransfer` и доступ Public или Private, затем Create.
+3. Если Xcode уже создал `Initial Commit` и изменений нет, дополнительный коммит не нужен. Если есть новые изменения, выберите Integrate → Commit…, проверьте список файлов и сохраните их коммитом. `.gitignore` исключает сборки, персональные настройки Xcode, DMG и временные материалы проверок. Общую схему, ресурсы приложения, вложенные библиотеки и лицензии нужно сохранить в репозитории.
+4. В Xcode → Settings… → Source Control нажмите Add Account, выберите GitHub и выполните показанные шаги входа. Раздел Apple Accounts предназначен для учётных записей Apple.
+5. В Source Control navigator откройте вкладку Repositories, раскройте PixelTransfer, нажмите правой кнопкой на Remotes и выберите New “PixelTransfer” Remote…. Выберите GitHub, имя `PixelTransfer` и доступ Public или Private, затем Create.
 6. Xcode создаст удалённый репозиторий и отправит коммиты. Если остались неотправленные изменения, выполните Integrate → Push…. Проверьте наличие файлов на GitHub.
 
 Если пустой репозиторий уже создан на GitHub, используйте Add Existing Remote… с его адресом. При создании репозитория на GitHub не добавляйте отдельный README: он уже есть в проекте. Токены доступа вводятся только при входе в Xcode, в файлы проекта их добавлять не нужно.
@@ -229,9 +229,9 @@ swift Tests/LocalizationChecks.swift .build/Build/Products/Debug/PixelTransfer.a
 
 1. Open `PixelTransfer.xcodeproj` from this directory.
 2. Choose Integrate → New Git Repository… and create the repository in the project root, alongside the `.xcodeproj` and README.
-3. Choose Integrate → Commit…, review the files, and create an initial commit such as `Initial PixelTransfer version`. The `.gitignore` excludes build output, user-specific Xcode state, DMGs, and disposable test fixtures. Keep the shared scheme, app resources, bundled libraries, and third-party licenses.
-4. In Xcode → Settings… → Accounts, add your GitHub account (+ → GitHub) and complete the sign-in steps shown by Xcode.
-5. In the Source Control navigator, Control-click the PixelTransfer repository and choose Create PixelTransfer Remote…. Select GitHub, enter `PixelTransfer`, choose Public or Private, and click Create.
+3. If Xcode has already created `Initial Commit` and there are no changes, another commit is unnecessary. If there are new changes, use Integrate → Commit…, review the files, and commit them. The `.gitignore` excludes build output, user-specific Xcode state, DMGs, and disposable test fixtures. Keep the shared scheme, app resources, bundled libraries, and third-party licenses.
+4. In Xcode → Settings… → Source Control, click Add Account, select GitHub, and complete the sign-in steps shown by Xcode. Apple Accounts is for Apple accounts.
+5. In the Source Control navigator, open Repositories, expand PixelTransfer, Control-click Remotes, and choose New “PixelTransfer” Remote…. Select GitHub, enter `PixelTransfer`, choose Public or Private, and click Create.
 6. Xcode creates the remote and sends the commits. If anything remains to push, use Integrate → Push…. Check the repository on GitHub to confirm that the files are present.
 
 If GitHub already has an empty repository, use Add Existing Remote… with its URL instead of creating another remote. Keep the GitHub repository empty initially: this project already has a README. GitHub access tokens are entered only in Xcode's sign-in flow, not in project files.
