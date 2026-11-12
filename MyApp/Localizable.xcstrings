@@ -4,33 +4,34 @@
     " Исключено ссылок и служебных объектов: %lld.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": " Исключено ссылок и служебных объектов: %lld."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": " Links and metadata items excluded: %lld."
           }
-        }
-      }
-    },
-    "%@ свободно": {
-      "extractionState": "manual",
-      "localizations": {
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ свободно"
+            "value": " Исключено ссылок и служебных объектов: %lld."
           }
-        },
+        }
+      }
+    },
+    "· %@": {},
+    "%@ свободно": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "%@ available"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ свободно"
           }
         }
       }
@@ -38,16 +39,16 @@
     "%lld из %lld: %@ → %@": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld из %lld: %@ → %@"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "%lld of %lld: %@ → %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld из %lld: %@ → %@"
           }
         }
       }
@@ -55,36 +56,6 @@
     "%lld объектов": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld объект"
-                }
-              },
-              "few": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld объекта"
-                }
-              },
-              "many": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld объектов"
-                }
-              },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld объекта"
-                }
-              }
-            }
-          }
-        },
         "en": {
           "variations": {
             "plural": {
@@ -102,22 +73,70 @@
               }
             }
           }
+        },
+        "ru": {
+          "variations": {
+            "plural": {
+              "few": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld объекта"
+                }
+              },
+              "many": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld объектов"
+                }
+              },
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld объект"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld объекта"
+                }
+              }
+            }
+          }
         }
       }
     },
-    "Аудиофайл": {
+    "Mac ↔ Android": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac ↔ Android"
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Аудиофайл"
+            "value": "Mac ↔ Android"
           }
-        },
+        }
+      }
+    },
+    "PixelTransfer": {},
+    "Аудиофайл": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Audio file"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аудиофайл"
           }
         }
       }
@@ -125,16 +144,50 @@
     "В библиотеке MTP отсутствует функция %@": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The MTP library is missing the function %@"
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "В библиотеке MTP отсутствует функция %@"
           }
-        },
+        }
+      }
+    },
+    "В дереве телефона обнаружен повторяющийся объект. Обновите папку и попробуйте снова.": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The MTP library is missing the function %@"
+            "value": "A repeated object was found in the phone folder tree. Refresh the folder and try again."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В дереве телефона обнаружен повторяющийся объект. Обновите папку и попробуйте снова."
+          }
+        }
+      }
+    },
+    "В папке телефона есть объекты с одинаковыми именами. Переименуйте их перед копированием.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The phone folder contains items with identical names. Rename them before copying."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В папке телефона есть объекты с одинаковыми именами. Переименуйте их перед копированием."
           }
         }
       }
@@ -142,16 +195,16 @@
     "Видео": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Видео"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Video"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Видео"
           }
         }
       }
@@ -159,16 +212,33 @@
     "Выберите обычный файл или папку. Символические ссылки не копируются.": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a regular file or folder. Symbolic links are not copied."
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Выберите обычный файл или папку. Символические ссылки не копируются."
           }
-        },
+        }
+      }
+    },
+    "Выберите папку для копирования с телефона": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Choose a regular file or folder. Symbolic links are not copied."
+            "value": "Choose a folder for files from your phone"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выберите папку для копирования с телефона"
           }
         }
       }
@@ -176,16 +246,16 @@
     "Выберите файлы и папки для копирования на телефон": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Выберите файлы и папки для копирования на телефон"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Choose files and folders to copy to the phone"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выберите файлы и папки для копирования на телефон"
           }
         }
       }
@@ -193,16 +263,16 @@
     "Выбрано: %lld": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Выбрано: %lld"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Selected: %lld"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбрано: %lld"
           }
         }
       }
@@ -210,16 +280,16 @@
     "Выбрать на Mac…": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Выбрать на Mac…"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Choose on Mac…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбрать на Mac…"
           }
         }
       }
@@ -227,16 +297,16 @@
     "Готово": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Готово"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Done"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Готово"
           }
         }
       }
@@ -244,16 +314,16 @@
     "Добавить": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Добавить"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Add"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавить"
           }
         }
       }
@@ -261,16 +331,16 @@
     "Добавить файлы и папки (⌘O)": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Добавить файлы и папки (⌘O)"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Add files and folders (⌘O)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавить файлы и папки (⌘O)"
           }
         }
       }
@@ -278,16 +348,16 @@
     "Добавить файлы и папки…": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Добавить файлы и папки…"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Add files and folders…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавить файлы и папки…"
           }
         }
       }
@@ -295,16 +365,16 @@
     "Добавьте файлы": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Добавьте файлы"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Add files"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавьте файлы"
           }
         }
       }
@@ -312,16 +382,16 @@
     "Добавьте файлы или папки в очередь справа,\nчтобы скопировать их сюда.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Добавьте файлы или папки в очередь справа,\nчтобы скопировать их сюда."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Add files or folders to the queue on the right\nto copy them here."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавьте файлы или папки в очередь справа,\nчтобы скопировать их сюда."
           }
         }
       }
@@ -329,16 +399,16 @@
     "Документы": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Документы"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Documents"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Документы"
           }
         }
       }
@@ -346,16 +416,16 @@
     "Дополнительно": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Дополнительно"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "More"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дополнительно"
           }
         }
       }
@@ -363,16 +433,16 @@
     "Загрузки": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Загрузки"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Downloads"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Загрузки"
           }
         }
       }
@@ -380,16 +450,16 @@
     "Избранное": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Избранное"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Favorites"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Избранное"
           }
         }
       }
@@ -397,16 +467,16 @@
     "Изображение": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Изображение"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Image"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изображение"
           }
         }
       }
@@ -414,16 +484,16 @@
     "Имя": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Имя"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Name"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Имя"
           }
         }
       }
@@ -431,16 +501,16 @@
     "Исходный файл недоступен или изменился после добавления в очередь.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Исходный файл недоступен или изменился после добавления в очередь."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "The source file is unavailable or has changed since it was added to the queue."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Исходный файл недоступен или изменился после добавления в очередь."
           }
         }
       }
@@ -448,16 +518,16 @@
     "Копирование": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Копирование"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Copying"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Копирование"
           }
         }
       }
@@ -465,16 +535,33 @@
     "Копировать выбранные файлы и папки (⌘↩)": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy selected files and folders (⌘↩)"
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Копировать выбранные файлы и папки (⌘↩)"
           }
-        },
+        }
+      }
+    },
+    "Копировать на Mac…": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Copy selected files and folders (⌘↩)"
+            "value": "Copy to Mac…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Копировать на Mac…"
           }
         }
       }
@@ -482,16 +569,33 @@
     "Копировать на телефон": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy to phone"
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Копировать на телефон"
           }
-        },
+        }
+      }
+    },
+    "Копировать сюда": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Copy to phone"
+            "value": "Copy here"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Копировать сюда"
           }
         }
       }
@@ -499,16 +603,16 @@
     "Копируется": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Копируется"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Copying"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Копируется"
           }
         }
       }
@@ -516,16 +620,50 @@
     "Музыка": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Music"
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Музыка"
           }
-        },
+        }
+      }
+    },
+    "На Mac": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Music"
+            "value": "To Mac"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "На Mac"
+          }
+        }
+      }
+    },
+    "На Mac уже есть папка, ссылка или специальный объект с таким именем.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A folder, link, or special item with this name already exists on the Mac."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "На Mac уже есть папка, ссылка или специальный объект с таким именем."
           }
         }
       }
@@ -533,16 +671,16 @@
     "На папку выше": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "На папку выше"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Enclosing folder"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "На папку выше"
           }
         }
       }
@@ -550,16 +688,33 @@
     "На папку выше (⌘↑)": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enclosing folder (⌘↑)"
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "На папку выше (⌘↑)"
           }
-        },
+        }
+      }
+    },
+    "На телефон": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Enclosing folder (⌘↑)"
+            "value": "To phone"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "На телефон"
           }
         }
       }
@@ -567,16 +722,16 @@
     "На телефоне недостаточно свободного места.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "На телефоне недостаточно свободного места."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "There is not enough free space on the phone."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "На телефоне недостаточно свободного места."
           }
         }
       }
@@ -584,16 +739,16 @@
     "На телефоне нет папки «%@». Выберите другую папку в хранилище.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "На телефоне нет папки «%@». Выберите другую папку в хранилище."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "The folder “%@” is not on the phone. Choose another folder in the storage."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "На телефоне нет папки «%@». Выберите другую папку в хранилище."
           }
         }
       }
@@ -601,16 +756,16 @@
     "Не найдена папка назначения для %@.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Не найдена папка назначения для %@."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "The destination folder for %@ could not be found."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не найдена папка назначения для %@."
           }
         }
       }
@@ -618,16 +773,16 @@
     "Не подключён": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Не подключён"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Not connected"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не подключён"
           }
         }
       }
@@ -635,16 +790,16 @@
     "Не удалось выполнить операцию": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Не удалось выполнить операцию"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "The operation failed"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось выполнить операцию"
           }
         }
       }
@@ -652,16 +807,33 @@
     "Не удалось выполнить операцию. Проверьте подключение и подключите телефон заново.": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The operation failed. Check the connection and reconnect the phone."
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Не удалось выполнить операцию. Проверьте подключение и подключите телефон заново."
           }
-        },
+        }
+      }
+    },
+    "Не удалось завершить копирование на Mac. Незавершённый файл удалён. Проверьте подключение и свободное место.": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The operation failed. Check the connection and reconnect the phone."
+            "value": "Could not finish copying to the Mac. The incomplete file was removed. Check the connection and available space."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось завершить копирование на Mac. Незавершённый файл удалён. Проверьте подключение и свободное место."
           }
         }
       }
@@ -669,16 +841,16 @@
     "Не удалось завершить передачу. При обрыве соединения на телефоне может остаться неполный файл.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Не удалось завершить передачу. При обрыве соединения на телефоне может остаться неполный файл."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Could not complete the transfer. If the connection was lost, an incomplete file may remain on the phone."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось завершить передачу. При обрыве соединения на телефоне может остаться неполный файл."
           }
         }
       }
@@ -686,16 +858,16 @@
     "Не удалось загрузить библиотеку передачи файлов.\n": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Не удалось загрузить библиотеку передачи файлов.\n"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Could not load the file transfer library.\n"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось загрузить библиотеку передачи файлов.\n"
           }
         }
       }
@@ -703,16 +875,33 @@
     "Не удалось открыть исходный файл на Mac.": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not open the source file on your Mac."
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Не удалось открыть исходный файл на Mac."
           }
-        },
+        }
+      }
+    },
+    "Не удалось открыть папку на Mac «%@»: %@. Проверьте права доступа и совпадения имён. Символические ссылки не используются.": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Could not open the source file on your Mac."
+            "value": "Could not open the Mac folder “%@”: %@. Check permissions and name conflicts. Symbolic links are not followed."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось открыть папку на Mac «%@»: %@. Проверьте права доступа и совпадения имён. Символические ссылки не используются."
           }
         }
       }
@@ -720,16 +909,16 @@
     "Не удалось открыть телефон. Разблокируйте его, выберите «Передача файлов» и закройте OpenMTP или другие приложения, использующие USB. Затем подключите снова.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Не удалось открыть телефон. Разблокируйте его, выберите «Передача файлов» и закройте OpenMTP или другие приложения, использующие USB. Затем подключите снова."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Could not open the phone. Unlock it, select “File transfer”, and close OpenMTP or other apps using USB. Then reconnect."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось открыть телефон. Разблокируйте его, выберите «Передача файлов» и закройте OpenMTP или другие приложения, использующие USB. Затем подключите снова."
           }
         }
       }
@@ -737,16 +926,16 @@
     "Не удалось открыть хранилище. Убедитесь, что телефон разблокирован и разрешена передача файлов.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Не удалось открыть хранилище. Убедитесь, что телефон разблокирован и разрешена передача файлов."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Could not open storage. Make sure the phone is unlocked and file transfer is enabled."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось открыть хранилище. Убедитесь, что телефон разблокирован и разрешена передача файлов."
           }
         }
       }
@@ -754,16 +943,33 @@
     "Не удалось подготовить «%@»: %@": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not prepare “%@”: %@"
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Не удалось подготовить «%@»: %@"
           }
-        },
+        }
+      }
+    },
+    "Не удалось проверить папку назначения на Mac.": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Could not prepare “%@”: %@"
+            "value": "Could not check the destination folder on the Mac."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось проверить папку назначения на Mac."
           }
         }
       }
@@ -771,16 +977,16 @@
     "Не удалось прочитать папку. Проверьте подключение и разблокируйте телефон.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Не удалось прочитать папку. Проверьте подключение и разблокируйте телефон."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Could not read the folder. Check the connection and unlock the phone."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось прочитать папку. Проверьте подключение и разблокируйте телефон."
           }
         }
       }
@@ -788,16 +994,16 @@
     "Не удалось прочитать файл %@: %@": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Не удалось прочитать файл %@: %@"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Could not read the file %@: %@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось прочитать файл %@: %@"
           }
         }
       }
@@ -805,16 +1011,67 @@
     "Не удалось создать папку «%@».": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not create the folder “%@”."
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Не удалось создать папку «%@»."
           }
-        },
+        }
+      }
+    },
+    "Не удалось создать файл на Mac. Проверьте права доступа и свободное место.": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Could not create the folder “%@”."
+            "value": "Could not create a file on the Mac. Check permissions and available space."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось создать файл на Mac. Проверьте права доступа и свободное место."
+          }
+        }
+      }
+    },
+    "Не удалось сохранить файл на Mac. Проверьте папку назначения и совпадения имён.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not save the file on the Mac. Check the destination folder and name conflicts."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось сохранить файл на Mac. Проверьте папку назначения и совпадения имён."
+          }
+        }
+      }
+    },
+    "Недопустимое имя объекта на телефоне: «%@».": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid item name on the phone: “%@”."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Недопустимое имя объекта на телефоне: «%@»."
           }
         }
       }
@@ -822,16 +1079,33 @@
     "Недопустимое имя папки.": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid folder name."
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Недопустимое имя папки."
           }
-        },
+        }
+      }
+    },
+    "Недопустимое имя файла на телефоне.": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Invalid folder name."
+            "value": "Invalid file name on the phone."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Недопустимое имя файла на телефоне."
           }
         }
       }
@@ -839,16 +1113,16 @@
     "Недостаточно памяти для передачи.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Недостаточно памяти для передачи."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Not enough memory for the transfer."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Недостаточно памяти для передачи."
           }
         }
       }
@@ -856,16 +1130,16 @@
     "Недостаточно памяти для создания папки.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Недостаточно памяти для создания папки."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Not enough memory to create the folder."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Недостаточно памяти для создания папки."
           }
         }
       }
@@ -873,16 +1147,16 @@
     "Неизвестное имя": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Неизвестное имя"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Unknown name"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Неизвестное имя"
           }
         }
       }
@@ -890,16 +1164,16 @@
     "Нельзя создать папку: на телефоне уже есть файл с именем «%@».": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Нельзя создать папку: на телефоне уже есть файл с именем «%@»."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Cannot create the folder: a file named “%@” already exists on the phone."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нельзя создать папку: на телефоне уже есть файл с именем «%@»."
           }
         }
       }
@@ -907,16 +1181,16 @@
     "Обновить": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Обновить"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Refresh"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обновить"
           }
         }
       }
@@ -924,16 +1198,16 @@
     "Обновить папку": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Обновить папку"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Refresh folder"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обновить папку"
           }
         }
       }
@@ -941,16 +1215,16 @@
     "Обновить папку (⌘R)": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Обновить папку (⌘R)"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Refresh folder (⌘R)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обновить папку (⌘R)"
           }
         }
       }
@@ -958,16 +1232,16 @@
     "Объектов в папке: %lld.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Объектов в папке: %lld."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Items in this folder: %lld."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Объектов в папке: %lld."
           }
         }
       }
@@ -975,16 +1249,16 @@
     "Ожидает": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ожидает"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Waiting"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ожидает"
           }
         }
       }
@@ -992,16 +1266,16 @@
     "Ожидают отправки: %lld": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ожидают отправки: %lld"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Waiting to copy: %lld"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ожидают отправки: %lld"
           }
         }
       }
@@ -1009,16 +1283,16 @@
     "Отключить телефон": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Отключить телефон"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Disconnect phone"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отключить телефон"
           }
         }
       }
@@ -1026,16 +1300,16 @@
     "Открытие папки…": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Открытие папки…"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Opening folder…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Открытие папки…"
           }
         }
       }
@@ -1043,16 +1317,16 @@
     "Открыть папку": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Открыть папку"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Open folder"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Открыть папку"
           }
         }
       }
@@ -1060,33 +1334,16 @@
     "Отмена передачи…": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Отмена передачи…"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Cancelling transfer…"
           }
-        }
-      }
-    },
-    "Отменить передачу": {
-      "extractionState": "manual",
-      "localizations": {
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Отменить передачу"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cancel transfer"
+            "value": "Отмена передачи…"
           }
         }
       }
@@ -1094,16 +1351,33 @@
     "Отменён": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelled"
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Отменён"
           }
-        },
+        }
+      }
+    },
+    "Отменить передачу": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cancelled"
+            "value": "Cancel transfer"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отменить передачу"
           }
         }
       }
@@ -1111,16 +1385,16 @@
     "Очередь передачи": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Очередь передачи"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Transfer queue"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Очередь передачи"
           }
         }
       }
@@ -1128,16 +1402,16 @@
     "Очистить завершённые": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Очистить завершённые"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Clear completed items"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Очистить завершённые"
           }
         }
       }
@@ -1145,16 +1419,16 @@
     "Ошибка": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ошибка"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Failed"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ошибка"
           }
         }
       }
@@ -1162,16 +1436,16 @@
     "Память телефона": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Память телефона"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Phone storage"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Память телефона"
           }
         }
       }
@@ -1179,16 +1453,16 @@
     "Папка": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Папка"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Folder"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Папка"
           }
         }
       }
@@ -1196,16 +1470,16 @@
     "Папка назначения": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Папка назначения"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Destination folder"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Папка назначения"
           }
         }
       }
@@ -1213,16 +1487,16 @@
     "Папка не найдена.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Папка не найдена."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Folder not found."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Папка не найдена."
           }
         }
       }
@@ -1230,16 +1504,16 @@
     "Папка пуста": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Папка пуста"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "This folder is empty"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Папка пуста"
           }
         }
       }
@@ -1247,16 +1521,16 @@
     "Папка пуста.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Папка пуста."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "This folder is empty."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Папка пуста."
           }
         }
       }
@@ -1264,16 +1538,16 @@
     "Папки объединяются. Существующие файлы пропускаются.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Папки объединяются. Существующие файлы пропускаются."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Folders are merged. Existing files are skipped."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Папки объединяются. Существующие файлы пропускаются."
           }
         }
       }
@@ -1281,16 +1555,16 @@
     "Передача": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Передача"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Transfer"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Передача"
           }
         }
       }
@@ -1298,16 +1572,16 @@
     "Передача остановлена. Уже скопированные файлы и папки сохранены.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Передача остановлена. Уже скопированные файлы и папки сохранены."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Transfer stopped. Files and folders already copied have been kept."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Передача остановлена. Уже скопированные файлы и папки сохранены."
           }
         }
       }
@@ -1315,16 +1589,16 @@
     "Передача отменена.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Передача отменена."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Transfer cancelled."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Передача отменена."
           }
         }
       }
@@ -1332,16 +1606,16 @@
     "Передача отменена. Уже скопированные файлы и папки сохранены.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Передача отменена. Уже скопированные файлы и папки сохранены."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Transfer cancelled. Files and folders already copied have been kept."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Передача отменена. Уже скопированные файлы и папки сохранены."
           }
         }
       }
@@ -1349,16 +1623,16 @@
     "Передача отменена. Уже скопированные файлы и папки сохранены. При отключённом кабеле проверьте, не остался ли неполный файл.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Передача отменена. Уже скопированные файлы и папки сохранены. При отключённом кабеле проверьте, не остался ли неполный файл."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Transfer cancelled. Files and folders already copied have been kept. If the cable was disconnected, check for an incomplete file."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Передача отменена. Уже скопированные файлы и папки сохранены. При отключённом кабеле проверьте, не остался ли неполный файл."
           }
         }
       }
@@ -1366,16 +1640,16 @@
     "Перетащите сюда файл или папку. Вложенные папки сохранятся.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Перетащите сюда файл или папку. Вложенные папки сохранятся."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Drag a file or folder here. Subfolders will be preserved."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перетащите сюда файл или папку. Вложенные папки сохранятся."
           }
         }
       }
@@ -1383,169 +1657,16 @@
     "Подготовка: %@…": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Подготовка: %@…"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Preparing: %@…"
           }
-        }
-      }
-    },
-    "Подключение к телефону…": {
-      "extractionState": "manual",
-      "localizations": {
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Подключение к телефону…"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Connecting to the phone…"
-          }
-        }
-      }
-    },
-    "Подключено несколько телефонов. Оставьте подключённым один телефон.": {
-      "extractionState": "manual",
-      "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Подключено несколько телефонов. Оставьте подключённым один телефон."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Multiple phones are connected. Keep only one phone connected."
-          }
-        }
-      }
-    },
-    "Подключено несколько устройств Google. Оставьте подключённым один Pixel.": {
-      "extractionState": "manual",
-      "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Подключено несколько устройств Google. Оставьте подключённым один Pixel."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Multiple Google devices are connected. Keep only one Pixel connected."
-          }
-        }
-      }
-    },
-    "Подключите Pixel по USB и выберите на телефоне «Передача файлов».": {
-      "extractionState": "manual",
-      "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Подключите Pixel по USB и выберите на телефоне «Передача файлов»."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Connect your Pixel via USB and select “File transfer” on the phone."
-          }
-        }
-      }
-    },
-    "Подключите Pixel по USB, разблокируйте его\nи выберите «Передача файлов» в настройках USB.": {
-      "extractionState": "manual",
-      "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Подключите Pixel по USB, разблокируйте его\nи выберите «Передача файлов» в настройках USB."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Connect your Pixel via USB, unlock it,\nand select “File transfer” in USB settings."
-          }
-        }
-      }
-    },
-    "Подключите телефон": {
-      "extractionState": "manual",
-      "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Подключите телефон"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Connect your phone"
-          }
-        }
-      }
-    },
-    "Подключите телефон заново.": {
-      "extractionState": "manual",
-      "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Подключите телефон заново."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reconnect the phone."
-          }
-        }
-      }
-    },
-    "Подключить Pixel": {
-      "extractionState": "manual",
-      "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Подключить Pixel"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Connect Pixel"
-          }
-        }
-      }
-    },
-    "Подключить телефон": {
-      "extractionState": "manual",
-      "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Подключить телефон"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Connect phone"
+            "value": "Подготовка: %@…"
           }
         }
       }
@@ -1553,16 +1674,169 @@
     "Подключён по USB": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connected via USB"
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Подключён по USB"
           }
-        },
+        }
+      }
+    },
+    "Подключение к телефону…": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Connected via USB"
+            "value": "Connecting to the phone…"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подключение к телефону…"
+          }
+        }
+      }
+    },
+    "Подключено несколько телефонов. Оставьте подключённым один телефон.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Multiple phones are connected. Keep only one phone connected."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подключено несколько телефонов. Оставьте подключённым один телефон."
+          }
+        }
+      }
+    },
+    "Подключено несколько устройств Google. Оставьте подключённым один Pixel.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Multiple Google devices are connected. Keep only one Pixel connected."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подключено несколько устройств Google. Оставьте подключённым один Pixel."
+          }
+        }
+      }
+    },
+    "Подключите Pixel по USB и выберите на телефоне «Передача файлов».": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect your Pixel via USB and select “File transfer” on the phone."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подключите Pixel по USB и выберите на телефоне «Передача файлов»."
+          }
+        }
+      }
+    },
+    "Подключите Pixel по USB, разблокируйте его\nи выберите «Передача файлов» в настройках USB.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect your Pixel via USB, unlock it,\nand select “File transfer” in USB settings."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подключите Pixel по USB, разблокируйте его\nи выберите «Передача файлов» в настройках USB."
+          }
+        }
+      }
+    },
+    "Подключите телефон": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect your phone"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подключите телефон"
+          }
+        }
+      }
+    },
+    "Подключите телефон заново.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reconnect the phone."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подключите телефон заново."
+          }
+        }
+      }
+    },
+    "Подключить Pixel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect Pixel"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подключить Pixel"
+          }
+        }
+      }
+    },
+    "Подключить телефон": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect phone"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подключить телефон"
           }
         }
       }
@@ -1570,16 +1844,16 @@
     "Подробности": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Подробности"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Details"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подробности"
           }
         }
       }
@@ -1587,16 +1861,16 @@
     "Поиск в папке": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Поиск в папке"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Search this folder"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Поиск в папке"
           }
         }
       }
@@ -1604,16 +1878,16 @@
     "Показать очередь передачи": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Показать очередь передачи"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Show transfer queue"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показать очередь передачи"
           }
         }
       }
@@ -1621,16 +1895,16 @@
     "Показывать скрытые файлы": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Показывать скрытые файлы"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Show hidden files"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показывать скрытые файлы"
           }
         }
       }
@@ -1638,16 +1912,16 @@
     "Понятно": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Понятно"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "OK"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Понятно"
           }
         }
       }
@@ -1655,16 +1929,16 @@
     "Пропущен": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Пропущен"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Skipped"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пропущен"
           }
         }
       }
@@ -1672,16 +1946,16 @@
     "Путь на телефоне": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Путь на телефоне"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Path on the phone"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Путь на телефоне"
           }
         }
       }
@@ -1689,16 +1963,16 @@
     "Размер": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Размер"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Size"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Размер"
           }
         }
       }
@@ -1706,16 +1980,16 @@
     "С Mac на телефон": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "С Mac на телефон"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "From Mac to phone"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "С Mac на телефон"
           }
         }
       }
@@ -1723,16 +1997,16 @@
     "Свободное место при подключении": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Свободное место при подключении"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Free space when the phone connected"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Свободное место при подключении"
           }
         }
       }
@@ -1740,16 +2014,16 @@
     "Скопировано файлов: %lld, пропущено совпадений: %lld. Папок: %lld.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Скопировано файлов: %lld, пропущено совпадений: %lld. Папок: %lld."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Files copied: %lld. Existing files skipped: %lld. Folders: %lld."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скопировано файлов: %lld, пропущено совпадений: %lld. Папок: %lld."
           }
         }
       }
@@ -1757,16 +2031,33 @@
     "Скопировано файлов: %lld. Пропущено совпадений: %lld.": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Files copied: %lld. Existing files skipped: %lld."
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Скопировано файлов: %lld. Пропущено совпадений: %lld."
           }
-        },
+        }
+      }
+    },
+    "Скопировать выделенные файлы и папки на Mac (⇧⌘S)": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Files copied: %lld. Existing files skipped: %lld."
+            "value": "Copy selected files and folders to Mac (⇧⌘S)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скопировать выделенные файлы и папки на Mac (⇧⌘S)"
           }
         }
       }
@@ -1774,16 +2065,16 @@
     "Скрыть очередь передачи": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Скрыть очередь передачи"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Hide transfer queue"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скрыть очередь передачи"
           }
         }
       }
@@ -1791,16 +2082,16 @@
     "Телефон": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Телефон"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Phone"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Телефон"
           }
         }
       }
@@ -1808,16 +2099,16 @@
     "Телефон не найден. Подключите Pixel кабелем с поддержкой данных, разблокируйте его и выберите USB → Передача файлов. Закройте OpenMTP и другие приложения для доступа к телефону.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Телефон не найден. Подключите Pixel кабелем с поддержкой данных, разблокируйте его и выберите USB → Передача файлов. Закройте OpenMTP и другие приложения для доступа к телефону."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Phone not found. Connect your Pixel with a data-capable USB cable, unlock it, and select USB → File transfer. Close OpenMTP and other apps that access the phone."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Телефон не найден. Подключите Pixel кабелем с поддержкой данных, разблокируйте его и выберите USB → Передача файлов. Закройте OpenMTP и другие приложения для доступа к телефону."
           }
         }
       }
@@ -1825,16 +2116,16 @@
     "Телефон отключён от приложения.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Телефон отключён от приложения."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Phone disconnected from the app."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Телефон отключён от приложения."
           }
         }
       }
@@ -1842,16 +2133,16 @@
     "Телефон подключён. Откройте папку назначения.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Телефон подключён. Откройте папку назначения."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Phone connected. Open the destination folder."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Телефон подключён. Откройте папку назначения."
           }
         }
       }
@@ -1859,16 +2150,16 @@
     "Тип": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Тип"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Kind"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тип"
           }
         }
       }
@@ -1876,16 +2167,16 @@
     "Только чтение": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Только чтение"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Read only"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Только чтение"
           }
         }
       }
@@ -1893,16 +2184,16 @@
     "Убрать %@ из очереди": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Убрать %@ из очереди"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Remove %@ from the queue"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Убрать %@ из очереди"
           }
         }
       }
@@ -1910,16 +2201,16 @@
     "Убрать завершённые из очереди": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Убрать завершённые из очереди"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Remove completed items from the queue"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Убрать завершённые из очереди"
           }
         }
       }
@@ -1927,16 +2218,16 @@
     "Убрать из очереди": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Убрать из очереди"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Remove from queue"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Убрать из очереди"
           }
         }
       }
@@ -1944,16 +2235,33 @@
     "Файл": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File"
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Файл"
           }
-        },
+        }
+      }
+    },
+    "Файл на телефоне изменился или недоступен. Обновите папку и повторите копирование.": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "File"
+            "value": "The file on the phone has changed or is unavailable. Refresh the folder and try copying again."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Файл на телефоне изменился или недоступен. Обновите папку и повторите копирование."
           }
         }
       }
@@ -1961,16 +2269,33 @@
     "Файл отправлен, но подтвердить его размер на телефоне не удалось. Проверьте файл перед повторной отправкой.": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The file was sent, but its size on the phone could not be verified. Check the file before sending it again."
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Файл отправлен, но подтвердить его размер на телефоне не удалось. Проверьте файл перед повторной отправкой."
           }
-        },
+        }
+      }
+    },
+    "Файл с таким именем уже есть на Mac.": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The file was sent, but its size on the phone could not be verified. Check the file before sending it again."
+            "value": "A file with this name already exists on the Mac."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Файл с таким именем уже есть на Mac."
           }
         }
       }
@@ -1978,16 +2303,33 @@
     "Файл уже существует: ": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File already exists: "
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Файл уже существует: "
           }
-        },
+        }
+      }
+    },
+    "Файлы между Mac и Android": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "File already exists: "
+            "value": "Files between Mac and Android"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Файлы между Mac и Android"
           }
         }
       }
@@ -1995,16 +2337,16 @@
     "Файлы с Mac на Android": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Файлы с Mac на Android"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Files from Mac to Android"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Файлы с Mac на Android"
           }
         }
       }
@@ -2012,16 +2354,16 @@
     "Фото": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Фото"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Photos"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Фото"
           }
         }
       }
@@ -2029,16 +2371,16 @@
     "Хранилище": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Хранилище"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Storage"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Хранилище"
           }
         }
       }
@@ -2046,16 +2388,16 @@
     "Хранилище недоступно для записи.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Хранилище недоступно для записи."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Storage is not writable."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Хранилище недоступно для записи."
           }
         }
       }
@@ -2063,16 +2405,16 @@
     "Хранилище телефона недоступно.": {
       "extractionState": "manual",
       "localizations": {
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Хранилище телефона недоступно."
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Phone storage is unavailable."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Хранилище телефона недоступно."
           }
         }
       }
@@ -2080,16 +2422,1002 @@
     "Чтение папки…": {
       "extractionState": "manual",
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reading folder…"
+          }
+        },
         "ru": {
           "stringUnit": {
             "state": "translated",
             "value": "Чтение папки…"
           }
+        }
+      }
+    },
+    "Чтобы скопировать с телефона, выделите объекты в таблице и нажмите «Копировать на Mac…».": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To copy from your phone, select items in the table and click “Copy to Mac…”."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы скопировать с телефона, выделите объекты в таблице и нажмите «Копировать на Mac…»."
+          }
+        }
+      }
+    },
+    "Быстрый доступ": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Быстрый доступ"
+          }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Reading folder…"
+            "value": "Quick Access"
+          }
+        }
+      }
+    },
+    "Камера": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Камера"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera"
+          }
+        }
+      }
+    },
+    "Изображения": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изображения"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pictures"
+          }
+        }
+      }
+    },
+    "С Mac на Pixel…": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "С Mac на Pixel…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac to Pixel…"
+          }
+        }
+      }
+    },
+    "С Pixel на Mac…": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "С Pixel на Mac…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pixel to Mac…"
+          }
+        }
+      }
+    },
+    "Нажмите «С Mac на Pixel…», чтобы скопировать файлы в эту папку.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нажмите «С Mac на Pixel…», чтобы скопировать файлы в эту папку."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Click “Mac to Pixel…” to copy files into this folder."
+          }
+        }
+      }
+    },
+    "Выбрать на Mac и скопировать в текущую папку телефона (⌘O)": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбрать на Mac и скопировать в текущую папку телефона (⌘O)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose on Mac and copy to the current phone folder (⌘O)"
+          }
+        }
+      }
+    },
+    "Чтобы скопировать с телефона, выделите объекты в таблице и нажмите «С Pixel на Mac…».": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы скопировать с телефона, выделите объекты в таблице и нажмите «С Pixel на Mac…»."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To copy from your phone, select items in the table and click “Pixel to Mac…”."
+          }
+        }
+      }
+    },
+    "Показать в Finder": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показать в Finder"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show in Finder"
+          }
+        }
+      }
+    },
+    "Скрыть результат": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скрыть результат"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dismiss result"
+          }
+        }
+      }
+    },
+    "Отменить": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отменить"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        }
+      }
+    },
+    "Скопировано файлов: %lld. Пропущено: %lld.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скопировано файлов: %lld. Пропущено: %lld."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Files copied: %lld. Skipped: %lld."
+          }
+        }
+      }
+    },
+    "Объект на Pixel изменился. Обновите папку и повторите действие.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Объект на Pixel изменился. Обновите папку и повторите действие."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The item on Pixel has changed. Refresh the folder and try again."
+          }
+        }
+      }
+    },
+    "Недопустимое имя. Используйте одно имя без косой черты.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Недопустимое имя. Используйте одно имя без косой черты."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid name. Enter a single name without a slash."
+          }
+        }
+      }
+    },
+    "В папке назначения уже есть объект с таким именем. Замена не выполнялась.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В папке назначения уже есть объект с таким именем. Замена не выполнялась."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An item with this name already exists in the destination. Nothing was replaced."
+          }
+        }
+      }
+    },
+    "Папка изменилась или не пуста. Обновите её перед удалением.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Папка изменилась или не пуста. Обновите её перед удалением."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The folder changed or is not empty. Refresh it before deleting."
+          }
+        }
+      }
+    },
+    "Не удалось удалить объект с Pixel.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось удалить объект с Pixel."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not delete the item from Pixel."
+          }
+        }
+      }
+    },
+    "Pixel не смог переименовать объект.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pixel не смог переименовать объект."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pixel could not rename the item."
+          }
+        }
+      }
+    },
+    "Нельзя переместить папку внутрь неё самой.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нельзя переместить папку внутрь неё самой."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A folder cannot be moved inside itself."
+          }
+        }
+      }
+    },
+    "Папка назначения на Pixel недоступна.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Папка назначения на Pixel недоступна."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The destination folder on Pixel is unavailable."
+          }
+        }
+      }
+    },
+    "Pixel не поддержал перемещение. Исходный объект не удалялся приложением.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pixel не поддержал перемещение. Исходный объект не удалялся приложением."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pixel did not support the move. The app did not delete the source item."
+          }
+        }
+      }
+    },
+    "Объект с таким именем уже существует.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Объект с таким именем уже существует."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An item with this name already exists."
+          }
+        }
+      }
+    },
+    "Новая папка": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Новая папка"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New Folder"
+          }
+        }
+      }
+    },
+    "Новая папка…": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Новая папка…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New Folder…"
+          }
+        }
+      }
+    },
+    "Создать": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Создать"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create"
+          }
+        }
+      }
+    },
+    "Переименовать": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Переименовать"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rename"
+          }
+        }
+      }
+    },
+    "Переименовать…": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Переименовать…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rename…"
+          }
+        }
+      }
+    },
+    "Сохранить": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сохранить"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save"
+          }
+        }
+      }
+    },
+    "Удалить с Pixel без возможности восстановления?": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удалить с Pixel без возможности восстановления?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permanently delete from Pixel?"
+          }
+        }
+      }
+    },
+    "Папки удаляются со всем содержимым. Корзины и отмены удаления нет.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Папки удаляются со всем содержимым. Корзины и отмены удаления нет."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folders and all their contents will be deleted. There is no Trash or undo."
+          }
+        }
+      }
+    },
+    "Удалить": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удалить"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        }
+      }
+    },
+    "Удалить…": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удалить…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete…"
+          }
+        }
+      }
+    },
+    "Выполнение операции на Pixel…": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выполнение операции на Pixel…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Performing operation on Pixel…"
+          }
+        }
+      }
+    },
+    "Операция остановлена. Уже выполненные изменения сохранены.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Операция остановлена. Уже выполненные изменения сохранены."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Operation stopped. Changes already made were kept."
+          }
+        }
+      }
+    },
+    "Операция завершена.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Операция завершена."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Operation completed."
+          }
+        }
+      }
+    },
+    "Загрузка предпросмотра с Pixel…": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Загрузка предпросмотра с Pixel…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Downloading preview from Pixel…"
+          }
+        }
+      }
+    },
+    "Предпросмотр готов. Временная копия не изменяет файл на Pixel.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Предпросмотр готов. Временная копия не изменяет файл на Pixel."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview is ready. The temporary copy does not change the file on Pixel."
+          }
+        }
+      }
+    },
+    "Предпросмотр остановлен.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Предпросмотр остановлен."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview stopped."
+          }
+        }
+      }
+    },
+    "Быстрый просмотр": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Быстрый просмотр"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick Look"
+          }
+        }
+      }
+    },
+    "Свойства": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Свойства"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Get Info"
+          }
+        }
+      }
+    },
+    "Переместить…": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Переместить…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move…"
+          }
+        }
+      }
+    },
+    "Путь на Pixel": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Путь на Pixel"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Path on Pixel"
+          }
+        }
+      }
+    },
+    "Байт": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Байт"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bytes"
+          }
+        }
+      }
+    },
+    "Изменён": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изменён"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Modified"
+          }
+        }
+      }
+    },
+    "Неизвестно": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Неизвестно"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown"
+          }
+        }
+      }
+    },
+    "Доступ к хранилищу": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Доступ к хранилищу"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Storage access"
+          }
+        }
+      }
+    },
+    "Чтение и запись": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтение и запись"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Read and write"
+          }
+        }
+      }
+    },
+    "Размер папки не рассчитывается: он требует чтения всего дерева Pixel.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Размер папки не рассчитывается: он требует чтения всего дерева Pixel."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folder size is not calculated because it requires reading the entire Pixel folder tree."
+          }
+        }
+      }
+    },
+    "Закрыть": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Закрыть"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close"
+          }
+        }
+      }
+    },
+    "Переместить на Pixel": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Переместить на Pixel"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move on Pixel"
+          }
+        }
+      }
+    },
+    "Вложенных папок нет": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вложенных папок нет"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No subfolders"
+          }
+        }
+      }
+    },
+    "Выберите папку в текущем хранилище. Существующие объекты не заменяются.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выберите папку в текущем хранилище. Существующие объекты не заменяются."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a folder in the current storage. Existing items will not be replaced."
+          }
+        }
+      }
+    },
+    "Переместить сюда": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Переместить сюда"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move Here"
+          }
+        }
+      }
+    },
+    "О PixelTransfer": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "О PixelTransfer"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "About PixelTransfer"
+          }
+        }
+      }
+    },
+    "Передача файлов и управление содержимым Google Pixel по USB.": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Передача файлов и управление содержимым Google Pixel по USB."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer files and manage content on Google Pixel over USB."
+          }
+        }
+      }
+    },
+    "Автор: poltoraska": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Автор: poltoraska"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Author: poltoraska"
+          }
+        }
+      }
+    },
+    "Использует libmtp и libusb (LGPL 2.1).": {
+      "extractionState": "manual",
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Использует libmtp и libusb (LGPL 2.1)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uses libmtp and libusb (LGPL 2.1)."
           }
         }
       }

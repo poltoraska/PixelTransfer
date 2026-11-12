@@ -4,6 +4,8 @@
 #import <sys/stat.h>
 #import <fcntl.h>
 #import <unistd.h>
+#import <stdio.h>
+#import <errno.h>
 @implementation PTStorage
 @end
 @implementation PTEntry
@@ -16,7 +18,7 @@ struct PTAPI {
     API(Release_Device); API(Get_Friendlyname); API(Get_Modelname);
     API(Get_Storage); API(Get_Errorstack); API(Clear_Errorstack);
     API(Get_Files_And_Folders); API(new_file_t); API(destroy_file_t);
-    API(Send_File_From_File_Descriptor); API(Get_Filemetadata); API(Delete_Object); API(Create_Folder);
+    API(Set_File_Name); API(Move_Object); API(Get_File_To_File_Descriptor); API(Send_File_From_File_Descriptor); API(Get_Filemetadata); API(Delete_Object); API(Create_Folder);
 };
 #undef API
 static struct PTAPI api;
@@ -33,13 +35,17 @@ static void loadLibrary(void) {
         LOAD(Release_Device); LOAD(Get_Friendlyname); LOAD(Get_Modelname);
         LOAD(Get_Storage); LOAD(Get_Errorstack); LOAD(Clear_Errorstack);
         LOAD(Get_Files_And_Folders); LOAD(new_file_t); LOAD(destroy_file_t);
-        LOAD(Send_File_From_File_Descriptor); LOAD(Get_Filemetadata); LOAD(Delete_Object); LOAD(Create_Folder);
+        LOAD(Set_File_Name); LOAD(Move_Object); LOAD(Get_File_To_File_Descriptor); LOAD(Send_File_From_File_Descriptor); LOAD(Get_Filemetadata); LOAD(Delete_Object); LOAD(Create_Folder);
 #undef LOAD
         api.Init();
     });
 }
 static BOOL fail(NSError **error, NSInteger code, NSString *message) {
     if (error) *error = [NSError errorWithDomain:@"PixelTransfer.MTP" code:code userInfo:@{NSLocalizedDescriptionKey:message}];
+    return NO;
+}
+static BOOL localFail(NSError **error, NSInteger code, NSString *message) {
+    if (error) *error = [NSError errorWithDomain:@"PixelTransfer.Local" code:code userInfo:@{NSLocalizedDescriptionKey:message}];
     return NO;
 }
 static NSString *text(const char *string) {
@@ -128,7 +134,7 @@ static int transferProgress(uint64_t sent, uint64_t total, const void *context) 
         LIBMTP_file_t *next=head->next;
         PTEntry *entry=[PTEntry new];
         entry.identifier=head->item_id; entry.name=text(head->filename);
-        entry.size=head->filesize; entry.folder=head->filetype==LIBMTP_FILETYPE_FOLDER;
+        entry.modifiedSeconds=head->modificationdate; entry.size=head->filesize; entry.folder=head->filetype==LIBMTP_FILETYPE_FOLDER;
         [result addObject:entry];
         head->next=NULL; api.destroy_file_t(head); head=next;
     }
@@ -157,6 +163,125 @@ static int transferProgress(uint64_t sent, uint64_t total, const void *context) 
     free(folderName);
     if (!identifier) { fail(error,17,[self deviceError:[NSString stringWithFormat:NSLocalizedString(@"Не удалось создать папку «%@».", nil), name]]); return nil; }
     return @(identifier);
+}
+// Revalidate identity immediately before every mutation: stale selections must not act on new objects.
+- (LIBMTP_file_t *)checkedFile:(PTEntry *)entry storage:(uint32_t)storage parent:(uint32_t)parent error:(NSError **)error {
+    if (!_device) { fail(error,5,NSLocalizedString(@"Подключите телефон заново.",nil)); return NULL; }
+    api.Clear_Errorstack(_device);
+    LIBMTP_file_t *file=api.Get_Filemetadata(_device,entry.identifier);
+    uint32_t expectedParent=parent==LIBMTP_FILES_AND_FOLDERS_ROOT?0:parent;
+    if (!file || file->storage_id!=storage || file->parent_id!=expectedParent || ![text(file->filename) isEqualToString:entry.name]
+        || (file->filetype==LIBMTP_FILETYPE_FOLDER)!=entry.folder || (!entry.folder && file->filesize!=entry.size)) {
+        if(file) api.destroy_file_t(file);
+        fail(error,30,NSLocalizedString(@"Объект на Pixel изменился. Обновите папку и повторите действие.",nil)); return NULL;
+    }
+    return file;
+}
+- (BOOL)canWrite:(uint32_t)storage error:(NSError **)error {
+    NSArray<PTStorage *> *storages=[self storagesWithError:error];
+    if(!storages) return NO;
+    for(PTStorage *s in storages) if(s.identifier==storage && s.writable) return YES;
+    return fail(error,10,NSLocalizedString(@"Хранилище недоступно для записи.",nil));
+}
+- (PTEntry *)metadataForEntry:(PTEntry *)entry storage:(uint32_t)storage parent:(uint32_t)parent error:(NSError **)error {
+    LIBMTP_file_t *file=[self checkedFile:entry storage:storage parent:parent error:error];
+    if(!file) return nil;
+    PTEntry *result=[PTEntry new]; result.identifier=file->item_id; result.name=text(file->filename);
+    result.folder=file->filetype==LIBMTP_FILETYPE_FOLDER; result.size=file->filesize; result.modifiedSeconds=file->modificationdate;
+    api.destroy_file_t(file); return result;
+}
+- (BOOL)availableName:(NSString *)name storage:(uint32_t)storage parent:(uint32_t)parent excluding:(uint32_t)excluded error:(NSError **)error {
+    if(!name.length || [name containsString:@"/"] || [name isEqualToString:@"."] || [name isEqualToString:@".."] || [name rangeOfString:[NSString stringWithFormat:@"%C",(unichar)0]].location!=NSNotFound)
+        return fail(error,31,NSLocalizedString(@"Недопустимое имя. Используйте одно имя без косой черты.",nil));
+    NSArray<PTEntry *> *entries=[self contentsOfStorage:storage parent:parent error:error]; if(!entries) return NO;
+    for(PTEntry *e in entries) if(e.identifier!=excluded && [e.name isEqualToString:name])
+        return fail(error,32,NSLocalizedString(@"В папке назначения уже есть объект с таким именем. Замена не выполнялась.",nil));
+    return YES;
+}
+- (BOOL)deleteEntry:(PTEntry *)entry storage:(uint32_t)storage parent:(uint32_t)parent error:(NSError **)error {
+    if(![self canWrite:storage error:error]) return NO;
+    LIBMTP_file_t *file=[self checkedFile:entry storage:storage parent:parent error:error]; if(!file) return NO; api.destroy_file_t(file);
+    if(entry.folder) {
+        NSArray *children=[self contentsOfStorage:storage parent:entry.identifier error:error]; if(!children) return NO;
+        if(children.count) return fail(error,33,NSLocalizedString(@"Папка изменилась или не пуста. Обновите её перед удалением.",nil));
+    }
+    api.Clear_Errorstack(_device);
+    if(api.Delete_Object(_device,entry.identifier)!=0) return fail(error,34,[self deviceError:NSLocalizedString(@"Не удалось удалить объект с Pixel.",nil)]);
+    return YES;
+}
+- (BOOL)renameEntry:(PTEntry *)entry storage:(uint32_t)storage parent:(uint32_t)parent name:(NSString *)name error:(NSError **)error {
+    if(![self canWrite:storage error:error] || ![self availableName:name storage:storage parent:parent excluding:entry.identifier error:error]) return NO;
+    LIBMTP_file_t *file=[self checkedFile:entry storage:storage parent:parent error:error]; if(!file) return NO;
+    api.Clear_Errorstack(_device); int status=api.Set_File_Name(_device,file,name.UTF8String); api.destroy_file_t(file);
+    if(status!=0) return fail(error,35,[self deviceError:NSLocalizedString(@"Pixel не смог переименовать объект.",nil)]);
+    return YES;
+}
+- (BOOL)moveEntry:(PTEntry *)entry storage:(uint32_t)storage parent:(uint32_t)parent destination:(uint32_t)destination error:(NSError **)error {
+    if(![self canWrite:storage error:error]) return NO;
+    LIBMTP_file_t *file=[self checkedFile:entry storage:storage parent:parent error:error]; if(!file) return NO; api.destroy_file_t(file);
+    uint32_t target=destination==LIBMTP_FILES_AND_FOLDERS_ROOT?0:destination;
+    uint32_t source=parent==LIBMTP_FILES_AND_FOLDERS_ROOT?0:parent;
+    if(source==target) return YES;
+    // Validate every ancestor, rejecting descendants of the source and corrupt parent cycles.
+    NSMutableSet *seen=[NSMutableSet set]; uint32_t ancestor=target;
+    while(ancestor) {
+        if(ancestor==entry.identifier || [seen containsObject:@(ancestor)]) return fail(error,36,NSLocalizedString(@"Нельзя переместить папку внутрь неё самой.",nil));
+        [seen addObject:@(ancestor)];
+        LIBMTP_file_t *folder=api.Get_Filemetadata(_device,ancestor);
+        if(!folder || folder->storage_id!=storage || folder->filetype!=LIBMTP_FILETYPE_FOLDER) {
+            if(folder) api.destroy_file_t(folder);
+            return fail(error,37,NSLocalizedString(@"Папка назначения на Pixel недоступна.",nil));
+        }
+        ancestor=folder->parent_id; api.destroy_file_t(folder);
+    }
+    if(![self availableName:entry.name storage:storage parent:destination excluding:0 error:error]) return NO;
+    api.Clear_Errorstack(_device);
+    if(api.Move_Object(_device,entry.identifier,storage,target)!=0) return fail(error,38,[self deviceError:NSLocalizedString(@"Pixel не поддержал перемещение. Исходный объект не удалялся приложением.",nil)]);
+    return YES;
+}
+- (BOOL)downloadFile:(uint32_t)identifier storage:(uint32_t)storage size:(uint64_t)size
+        directoryFD:(int)directoryFD name:(NSString *)name
+           progress:(BOOL (^)(uint64_t,uint64_t))progress error:(NSError **)error {
+    if (!_device) return fail(error,5,NSLocalizedString(@"Подключите телефон заново.", nil));
+    if (!name.length || [name containsString:@"/"] || [name rangeOfString:[NSString stringWithFormat:@"%C", (unichar)0]].location != NSNotFound || [name isEqualToString:@"."] || [name isEqualToString:@".."]) {
+        return fail(error,18,NSLocalizedString(@"Недопустимое имя файла на телефоне.", nil));
+    }
+    struct stat existing;
+    if (fstatat(directoryFD, name.fileSystemRepresentation, &existing, AT_SYMLINK_NOFOLLOW) == 0) {
+        if (S_ISREG(existing.st_mode)) return fail(error,8,NSLocalizedString(@"Файл с таким именем уже есть на Mac.", nil));
+        return localFail(error,19,NSLocalizedString(@"На Mac уже есть папка, ссылка или специальный объект с таким именем.", nil));
+    }
+    if (errno != ENOENT) return localFail(error,19,NSLocalizedString(@"Не удалось проверить папку назначения на Mac.", nil));
+    if (!progress(0,size)) return fail(error,12,NSLocalizedString(@"Передача отменена.", nil));
+    api.Clear_Errorstack(_device);
+    LIBMTP_file_t *metadata=api.Get_Filemetadata(_device,identifier);
+    BOOL matches=metadata && metadata->storage_id==storage && metadata->filesize==size && metadata->filetype!=LIBMTP_FILETYPE_FOLDER
+        && [text(metadata->filename) isEqualToString:name];
+    if (metadata) api.destroy_file_t(metadata);
+    if (!matches) return fail(error,20,[self deviceError:NSLocalizedString(@"Файл на телефоне изменился или недоступен. Обновите папку и повторите копирование.", nil)]);
+    NSString *temporary=[NSString stringWithFormat:@".PixelTransfer-%@.partial", NSUUID.UUID.UUIDString];
+    int fd=openat(directoryFD,temporary.fileSystemRepresentation,O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC,0600);
+    if (fd<0) return localFail(error,21,NSLocalizedString(@"Не удалось создать файл на Mac. Проверьте права доступа и свободное место.", nil));
+    api.Clear_Errorstack(_device);
+    int status=api.Get_File_To_File_Descriptor(_device,identifier,fd,transferProgress,(__bridge const void *)progress);
+    struct stat info;
+    BOOL verified=status==0 && fstat(fd,&info)==0 && info.st_size>=0 && (uint64_t)info.st_size==size;
+    BOOL finished=verified && progress(size,size) && fsync(fd)==0;
+    if (close(fd)!=0) finished=NO;
+    if (!finished) {
+        unlinkat(directoryFD,temporary.fileSystemRepresentation,0);
+        return fail(error,22,[self deviceError:NSLocalizedString(@"Не удалось завершить копирование на Mac. Незавершённый файл удалён. Проверьте подключение и свободное место.", nil)]);
+    }
+    // Publish atomically without replacing any existing object, even if it appeared during transfer.
+    int published=renameatx_np(directoryFD,temporary.fileSystemRepresentation,directoryFD,name.fileSystemRepresentation,RENAME_EXCL);
+    int publishError=errno;
+    unlinkat(directoryFD,temporary.fileSystemRepresentation,0);
+    if (published!=0) {
+        if (publishError==EEXIST && fstatat(directoryFD,name.fileSystemRepresentation,&existing,AT_SYMLINK_NOFOLLOW)==0 && S_ISREG(existing.st_mode))
+            return fail(error,8,NSLocalizedString(@"Файл с таким именем уже есть на Mac.", nil));
+        return localFail(error,23,NSLocalizedString(@"Не удалось сохранить файл на Mac. Проверьте папку назначения и совпадения имён.", nil));
+    }
+    return YES;
 }
 - (BOOL)uploadFile:(NSURL *)url storage:(uint32_t)storage parent:(uint32_t)parent progress:(BOOL (^)(uint64_t,uint64_t))progress error:(NSError **)error {
     if (!_device) return fail(error,5,NSLocalizedString(@"Подключите телефон заново.", nil));

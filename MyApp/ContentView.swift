@@ -1,14 +1,16 @@
 import SwiftUI
+import QuickLook
 import UniformTypeIdentifiers
 
 private struct PhoneLocation: Identifiable {
     let id: String
     let title: String
     let symbol: String
-    static let favorites = [
+    static let quickAccess = [
         PhoneLocation(id: "Music", title: String(localized: "Музыка"), symbol: "music.note"),
         PhoneLocation(id: "Download", title: String(localized: "Загрузки"), symbol: "arrow.down.circle"),
-        PhoneLocation(id: "DCIM", title: String(localized: "Фото"), symbol: "photo"),
+        PhoneLocation(id: "DCIM", title: String(localized: "Камера"), symbol: "camera"),
+        PhoneLocation(id: "Pictures", title: String(localized: "Изображения"), symbol: "photo"),
         PhoneLocation(id: "Documents", title: String(localized: "Документы"), symbol: "doc")
     ]
 }
@@ -33,17 +35,21 @@ private extension PhoneEntry {
 
 struct ContentView: View {
     @StateObject private var model = TransferModel()
-    @AppStorage("showTransferQueue") private var showQueue = true
+    @AppStorage("showTransferQueueV11") private var showQueue = false
     @AppStorage("showHiddenPhoneFiles") private var showHidden = false
     @State private var dropTarget = false
     @State private var search = ""
-    @State private var selectedEntries: Set<UInt32> = []
+    @State private var sidebarSelection: String?
     @State private var sortOrder = [KeyPathComparator(\PhoneEntry.name)]
 
     private var folderTitle: String { model.folders.last?.name ?? String(localized: "Хранилище") }
-    private var sidebarSelection: String? {
+    private var currentSidebarLocation: String? {
         guard model.connected else { return nil }
-        return model.folders.first?.name ?? "storage"
+        guard let name = model.folders.first?.name else { return "storage" }
+        return quickAccessLocations.contains { $0.id == name } ? name : nil
+    }
+    private var quickAccessLocations: [PhoneLocation] {
+        PhoneLocation.quickAccess.filter { model.rootFolderNames.contains($0.id) }
     }
     private var visibleEntries: [PhoneEntry] {
         model.entries.filter {
@@ -51,11 +57,11 @@ struct ContentView: View {
         }.sorted(using: sortOrder)
     }
     private var selectedFolder: PhoneEntry? {
-        guard selectedEntries.count == 1 else { return nil }
-        return model.entries.first { selectedEntries.contains($0.id) && $0.folder }
+        guard model.selectedPhoneIDs.count == 1 else { return nil }
+        return model.entries.first { model.selectedPhoneIDs.contains($0.id) && $0.folder }
     }
     private var objectCount: String { String(localized: "\(visibleEntries.count) объектов") }
-    private var canCopy: Bool { model.connected && model.writable && !model.isBusy && model.pending > 0 }
+    private var canCopy: Bool { model.connected && model.writable && !model.isBusy && !model.isChoosingDestination && model.pending > 0 }
     private func size(_ value: UInt64) -> String {
         ByteCountFormatter.string(fromByteCount: Int64(clamping: value), countStyle: .file)
     }
@@ -67,7 +73,7 @@ struct ContentView: View {
         } detail: {
             WindowColumn { browser }
                 .navigationTitle(model.connected ? folderTitle : "PixelTransfer")
-                .navigationSubtitle(model.connected ? "\(model.deviceName ?? "Android") · \(objectCount)" : String(localized: "Файлы с Mac на Android"))
+                .navigationSubtitle(model.connected ? "\(model.deviceName ?? "Android") · \(objectCount)" : String(localized: "Файлы между Mac и Android"))
                 .searchable(text: $search, placement: .toolbar, prompt: String(localized: "Поиск в папке"))
                 .toolbar { windowToolbar }
         }
@@ -76,11 +82,16 @@ struct ContentView: View {
             WindowColumn { queuePane }
                 .inspectorColumnWidth(min: 300, ideal: 330, max: 440)
         }
+        .quickLookPreview($model.previewURL)
+        .onChange(of: model.previewURL) { _, url in if url == nil { model.closePreview() } }
+        .sheet(item: $model.fileInfo) { info in ExplorerInfoView(info: info) }
+        .sheet(isPresented: $model.movePresented, onDismiss: model.closeMove) { MoveDestinationView(model: model) }
+        .background(InfoShortcutBridge(model: model).frame(width: 0, height: 0))
         .focusedSceneValue(\.transferModel, model)
         .frame(minWidth: 920, minHeight: 590)
-        .onChange(of: model.destination) { _, _ in search = ""; selectedEntries = [] }
-        .onChange(of: model.storageID) { _, _ in search = ""; selectedEntries = [] }
-        .onChange(of: model.uploads.count) { old, new in if new > old { showQueue = true } }
+        .onChange(of: search) { _, _ in model.selectedPhoneIDs = [] }
+        .onChange(of: model.destination) { _, _ in search = ""; model.selectedPhoneIDs = [] }
+        .onChange(of: model.storageID) { _, _ in search = ""; model.selectedPhoneIDs = [] }
         .onDrop(of: [.fileURL], isTargeted: $dropTarget, perform: acceptDrop)
         .overlay {
             if dropTarget && !model.isBusy {
@@ -106,25 +117,48 @@ struct ContentView: View {
                 }
                 Spacer(minLength: 0)
             }.padding(.horizontal, 18).padding(.vertical, 20)
-            List(selection: Binding(get: { sidebarSelection }, set: { value in
-                guard let value else { return }
-                model.browseShortcut(named: value == "storage" ? nil : value)
-            })) {
+            // Selection belongs to the view so the highlight follows the click immediately.
+            // Synchronize with the actual folder after navigation finishes (including errors).
+            List(selection: $sidebarSelection) {
                 Section(String(localized: "Телефон")) {
                     Label(String(localized: "Хранилище"), systemImage: "internaldrive").tag("storage")
                 }
-                Section(String(localized: "Избранное")) {
-                    ForEach(PhoneLocation.favorites) { location in
-                        Label(location.title, systemImage: location.symbol).tag(location.id)
+                if !quickAccessLocations.isEmpty {
+                    Section(String(localized: "Быстрый доступ")) {
+                        ForEach(quickAccessLocations) { location in
+                            Label(location.title, systemImage: location.symbol).tag(location.id)
+                        }
                     }
                 }
             }
             .listStyle(.sidebar)
-            .disabled(!model.connected || model.isBusy)
+            .disabled(!model.connected || model.isTransferring || model.isChoosingDestination)
+            // Block extra clicks during folder reads without dimming the selected row.
+            .allowsHitTesting(!model.isBusy)
+            .onChange(of: sidebarSelection) { _, location in
+                guard let location, location != currentSidebarLocation else { return }
+                guard !model.isBusy, !model.isChoosingDestination else {
+                    sidebarSelection = currentSidebarLocation
+                    return
+                }
+                model.browseShortcut(named: location == "storage" ? nil : location)
+            }
+            .onChange(of: currentSidebarLocation, initial: true) { _, location in
+                sidebarSelection = location
+            }
+            .onChange(of: model.isBusy) { _, busy in
+                if !busy { sidebarSelection = currentSidebarLocation }
+            }
             if model.connected {
                 VStack(alignment: .leading, spacing: 7) {
                     if model.storages.count > 1 {
-                        Picker(String(localized: "Хранилище"), selection: Binding(get: { model.storageID }, set: { model.browse([], storage: $0) })) {
+                        Picker(String(localized: "Хранилище"), selection: Binding(get: { model.storageID }, set: { storage in
+                            guard storage != model.storageID else { return }
+                            Task { @MainActor in
+                                guard storage != model.storageID else { return }
+                                model.browse([], storage: storage)
+                            }
+                        })) {
                             ForEach(model.storages) { Text($0.name).tag($0.id) }
                         }.labelsHidden().disabled(model.isBusy)
                     }
@@ -152,7 +186,7 @@ struct ContentView: View {
                 }
             } else if visibleEntries.isEmpty {
                 if search.isEmpty {
-                    ContentUnavailableView(String(localized: "Папка пуста"), systemImage: "folder", description: Text(String(localized: "Добавьте файлы или папки в очередь справа,\nчтобы скопировать их сюда.")))
+                    ContentUnavailableView(String(localized: "Папка пуста"), systemImage: "folder", description: Text(String(localized: "Нажмите «С Mac на Pixel…», чтобы скопировать файлы в эту папку.")))
                 } else {
                     ContentUnavailableView.search(text: search)
                 }
@@ -169,7 +203,7 @@ struct ContentView: View {
     }
 
     private var fileTable: some View {
-        Table(visibleEntries, selection: $selectedEntries, sortOrder: $sortOrder) {
+        Table(visibleEntries, selection: $model.selectedPhoneIDs, sortOrder: $sortOrder) {
             TableColumn(String(localized: "Имя"), value: \.name) { entry in
                 HStack(spacing: 9) {
                     Image(systemName: entry.symbol)
@@ -190,9 +224,25 @@ struct ContentView: View {
             if ids.count == 1, let entry = model.entries.first(where: { ids.contains($0.id) && $0.folder }) {
                 Button(String(localized: "Открыть папку")) { model.open(entry) }.disabled(model.isBusy)
             }
+            if ids.count == 1 {
+                Button(String(localized: "Быстрый просмотр")) { model.preview(ids: ids) }.disabled(!model.canExplore)
+                Button(String(localized: "Свойства")) { model.showInfo(ids: ids) }.disabled(!model.canExplore)
+                Button(String(localized: "Переименовать…")) { model.requestRename(ids: ids) }.disabled(!model.canEdit)
+            }
+            if !ids.isEmpty {
+                Button(String(localized: "Переместить…")) { model.beginMove(ids: ids) }.disabled(!model.canEdit)
+                Button(String(localized: "Удалить…"), role: .destructive) { model.requestDelete(ids: ids) }.disabled(!model.canEdit)
+                Divider()
+                Button(String(localized: "Копировать на Mac…")) { model.pickDownloadDestination(ids: ids) }
+                    .disabled(model.isBusy || model.isChoosingDestination || !model.connected)
+            }
         } primaryAction: { ids in
             guard ids.count == 1, let entry = model.entries.first(where: { ids.contains($0.id) }) else { return }
-            model.open(entry)
+            if entry.folder { model.open(entry) } else { model.preview(ids: ids) }
+        }
+        .onKeyPress(keys: [.space], phases: .down) { press in
+            guard press.modifiers.isEmpty, model.selectedPhoneIDs.count == 1, model.canExplore else { return .ignored }
+            model.preview(); return .handled
         }
         .onKeyPress(keys: [.return], phases: .down) { press in
             guard press.modifiers.isEmpty, let folder = selectedFolder, !model.isBusy else { return .ignored }
@@ -224,13 +274,54 @@ struct ContentView: View {
     }
 
     private var statusBar: some View {
-        HStack(spacing: 8) {
-            if model.isBusy { ProgressView().controlSize(.mini) }
-            Text(model.status).font(.caption).foregroundStyle(.secondary).lineLimit(1).help(model.status)
-            Spacer(minLength: 0)
-            if !selectedEntries.isEmpty { Text(String(localized: "Выбрано: \(selectedEntries.count)")).font(.caption).foregroundStyle(.secondary) }
+        VStack(alignment: .leading, spacing: 10) {
+            if model.isTransferring {
+                HStack(spacing: 12) {
+                    Image(systemName: model.downloadDestination == nil ? "smartphone" : "laptopcomputer")
+                        .foregroundStyle(.secondary)
+                    Text(model.currentTransferPath).lineLimit(1).truncationMode(.middle)
+                        .help(model.status)
+                    Spacer(minLength: 0)
+                    Text(model.progress, format: .percent.precision(.fractionLength(0))).monospacedDigit()
+                    Button(String(localized: "Отменить"), action: model.cancel).buttonStyle(.glass)
+                }
+                ProgressView(value: model.progress).progressViewStyle(.linear)
+            } else if let result = model.transferResult {
+                HStack(alignment: .center, spacing: 12) {
+                    Text(result).lineLimit(2).textSelection(.enabled).help(result)
+                    Spacer(minLength: 0)
+                    if model.resultDestination != nil {
+                        Button(String(localized: "Показать в Finder"), action: model.revealDownload)
+                    }
+                    Button(String(localized: "Подробности")) { showQueue = true }
+                    Button { model.transferResult = nil } label: { Image(systemName: "xmark") }
+                        .buttonStyle(.borderless).help(String(localized: "Скрыть результат"))
+                        .accessibilityLabel(String(localized: "Скрыть результат"))
+                }.buttonStyle(.glass)
+            }
+            if !model.isTransferring && model.pending > 0 {
+                HStack(spacing: 12) {
+                    Text(String(localized: "Ожидают отправки: \(model.pending)"))
+                    Text(model.connected ? model.destination : String(localized: "Подключите телефон"))
+                        .foregroundStyle(.secondary).lineLimit(1).truncationMode(.middle)
+                    Spacer(minLength: 0)
+                    Button(String(localized: "Копировать на телефон"), action: model.startTransfer)
+                        .buttonStyle(.glassProminent).disabled(!canCopy)
+                    Button(String(localized: "Подробности")) { showQueue = true }.buttonStyle(.glass)
+                }
+            }
+            if !model.isTransferring && model.transferResult == nil {
+                HStack(spacing: 8) {
+                    if model.isBusy { ProgressView().controlSize(.mini) }
+                    Text(model.status).foregroundStyle(.secondary).lineLimit(1).help(model.status)
+                    Spacer(minLength: 0)
+                    if !model.selectedPhoneIDs.isEmpty {
+                        Text(String(localized: "Выбрано: \(model.selectedPhoneIDs.count)")).foregroundStyle(.secondary)
+                    }
+                }
+            }
         }
-        .padding(.horizontal, 18).padding(.vertical, 10)
+        .font(.caption).padding(.horizontal, 18).padding(.vertical, 10)
         .background(.bar)
     }
 
@@ -245,12 +336,19 @@ struct ContentView: View {
                 .disabled(!model.connected || model.isBusy).help(String(localized: "Обновить папку (⌘R)"))
         }
         ToolbarItemGroup(placement: .primaryAction) {
-            Button(action: model.pickFiles) { Label(String(localized: "Добавить"), systemImage: "plus") }
-                .disabled(model.isBusy).help(String(localized: "Добавить файлы и папки (⌘O)"))
+            Button { model.pickDownloadDestination() } label: {
+                Label(String(localized: "С Pixel на Mac…"), systemImage: "arrow.down.to.line")
+            }.labelStyle(.titleAndIcon).disabled(!model.canDownload).help(String(localized: "Скопировать выделенные файлы и папки на Mac (⇧⌘S)"))
+            Button(action: model.pickFiles) {
+                Label(String(localized: "С Mac на Pixel…"), systemImage: "arrow.up.to.line")
+            }.labelStyle(.titleAndIcon)
+                .disabled(!model.connected || !model.writable || model.isBusy || model.isChoosingDestination)
+                .help(String(localized: "Выбрать на Mac и скопировать в текущую папку телефона (⌘O)"))
             Menu {
                 Toggle(String(localized: "Показывать скрытые файлы"), isOn: $showHidden)
                     .keyboardShortcut(".", modifiers: [.command, .shift])
                 Divider()
+                Button(String(localized: "Новая папка…"), action: model.requestNewFolder).disabled(!model.canEdit)
                 if model.connected { Button(String(localized: "Отключить телефон"), action: model.disconnect).disabled(model.isBusy) }
                 else { Button(String(localized: "Подключить телефон"), action: model.connect).disabled(model.isBusy) }
             } label: { Label(String(localized: "Дополнительно"), systemImage: "ellipsis") }
@@ -264,7 +362,7 @@ struct ContentView: View {
             HStack {
                 VStack(alignment: .leading, spacing: 3) {
                     Text(String(localized: "Очередь передачи")).font(.headline)
-                    Text(model.pending == 0 ? String(localized: "С Mac на телефон") : String(localized: "Ожидают отправки: \(model.pending)"))
+                    Text(model.pending == 0 ? String(localized: "Mac ↔ Android") : String(localized: "Ожидают отправки: \(model.pending)"))
                         .font(.caption).foregroundStyle(.secondary)
                 }
                 Spacer()
@@ -281,6 +379,9 @@ struct ContentView: View {
                     Text(String(localized: "Добавьте файлы")).font(.title3.weight(.semibold))
                     Text(String(localized: "Перетащите сюда файл или папку. Вложенные папки сохранятся."))
                         .foregroundStyle(.secondary).multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
+                    Text(String(localized: "Чтобы скопировать с телефона, выделите объекты в таблице и нажмите «С Pixel на Mac…»."))
+                        .font(.caption).foregroundStyle(.secondary).multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                     Button(String(localized: "Выбрать на Mac…"), action: model.pickFiles)
                         .buttonStyle(.glass).disabled(model.isBusy)
@@ -301,7 +402,11 @@ struct ContentView: View {
                 .font(.title3).foregroundStyle(item.folder ? Color.accentColor : Color.secondary)
                 .padding(.top, 2)
             VStack(alignment: .leading, spacing: 5) {
-                Text(item.url.lastPathComponent).fontWeight(.medium).lineLimit(2).truncationMode(.middle)
+                Text(item.remote?.name ?? item.url.lastPathComponent).fontWeight(.medium).lineLimit(2).truncationMode(.middle)
+                Label(item.remote == nil ? String(localized: "На телефон") : String(localized: "На Mac"),
+                      systemImage: item.remote == nil ? "smartphone" : "laptopcomputer")
+                    .font(.caption).foregroundStyle(.secondary)
+                if item.remote != nil { Text(item.url.deletingLastPathComponent().path).font(.caption).foregroundStyle(.secondary).lineLimit(1).truncationMode(.middle).help(item.url.path) }
                 HStack(spacing: 5) {
                     if item.state == .sending { ProgressView().controlSize(.mini) }
                     else { Image(systemName: stateSymbol(item.state)) }
@@ -328,8 +433,8 @@ struct ContentView: View {
                 Image(systemName: "folder").font(.title3).foregroundStyle(.secondary)
                 VStack(alignment: .leading, spacing: 3) {
                     Text(String(localized: "Папка назначения")).font(.caption).foregroundStyle(.secondary)
-                    Text(model.connected ? model.destination : String(localized: "Подключите телефон"))
-                        .font(.callout).lineLimit(1).truncationMode(.middle).help(model.destination)
+                    Text(model.queueDestination)
+                        .font(.callout).lineLimit(1).truncationMode(.middle).help(model.queueDestination)
                 }
                 Spacer(minLength: 0)
             }
@@ -345,6 +450,11 @@ struct ContentView: View {
                     Button(String(localized: "Отменить передачу"), action: model.cancel).buttonStyle(.glass)
                         .frame(maxWidth: .infinity)
                 }
+            } else if model.pending == 0 {
+                Button { model.pickDownloadDestination() } label: {
+                    Label(String(localized: "Копировать на Mac…"), systemImage: "arrow.down.to.line")
+                        .frame(maxWidth: .infinity)
+                }.buttonStyle(.glassProminent).controlSize(.large).disabled(!model.canDownload)
             } else {
                 Button(action: model.startTransfer) {
                     Label(String(localized: "Копировать на телефон"), systemImage: "arrow.down.to.line")
@@ -378,7 +488,6 @@ struct ContentView: View {
     }
     private func acceptDrop(_ providers: [NSItemProvider]) -> Bool {
         guard !model.isBusy else { return false }
-        showQueue = true
         for provider in providers {
             _ = provider.loadObject(ofClass: URL.self) { url, _ in
                 guard let url else { return }
@@ -411,9 +520,13 @@ extension FocusedValues {
 struct TransferCommands: Commands {
     @FocusedValue(\.transferModel) private var model
     var body: some Commands {
+        CommandGroup(replacing: .appInfo) {
+            Button(String(localized: "О PixelTransfer"), action: AppAbout.show)
+        }
         CommandGroup(replacing: .newItem) {
-            Button(String(localized: "Добавить файлы и папки…")) { model?.pickFiles() }
-                .keyboardShortcut("o", modifiers: .command).disabled(model == nil || model?.isBusy == true)
+            Button(String(localized: "С Mac на Pixel…")) { model?.pickFiles() }
+                .keyboardShortcut("o", modifiers: .command)
+                .disabled(model?.connected != true || model?.writable != true || model?.isBusy == true || model?.isChoosingDestination == true)
         }
         CommandMenu(String(localized: "Передача")) {
             Button(model?.connected == true ? String(localized: "Отключить телефон") : String(localized: "Подключить телефон")) {
@@ -422,7 +535,22 @@ struct TransferCommands: Commands {
             Button(String(localized: "Копировать на телефон")) { model?.startTransfer() }
                 .keyboardShortcut(.return, modifiers: .command)
                 .disabled(model?.connected != true || model?.writable != true || model?.isBusy == true || model?.pending == 0)
+            Button(String(localized: "С Pixel на Mac…")) { model?.pickDownloadDestination() }
+                .keyboardShortcut("s", modifiers: [.command, .shift]).disabled(model?.canDownload != true)
             Button(String(localized: "Отменить передачу")) { model?.cancel() }.disabled(model?.isTransferring != true)
+            Divider()
+            Button(String(localized: "Быстрый просмотр")) { model?.preview() }
+                .disabled(model?.canExplore != true || model?.selectedPhoneIDs.count != 1)
+            Button(String(localized: "Свойства")) { model?.showInfo() }
+                .keyboardShortcut("i", modifiers: .command).disabled(model?.canExplore != true || model?.selectedPhoneIDs.count != 1)
+            Button(String(localized: "Новая папка…")) { model?.requestNewFolder() }
+                .keyboardShortcut("n", modifiers: [.command, .shift]).disabled(model?.canEdit != true)
+            Button(String(localized: "Переименовать…")) { model?.requestRename() }
+                .disabled(model?.canEdit != true || model?.selectedPhoneIDs.count != 1)
+            Button(String(localized: "Переместить…")) { model?.beginMove() }
+                .disabled(model?.canEdit != true || model?.selectedPhoneIDs.isEmpty != false)
+            Button(String(localized: "Удалить…")) { model?.requestDelete() }
+                .keyboardShortcut(.delete, modifiers: .command).disabled(model?.canEdit != true || model?.selectedPhoneIDs.isEmpty != false)
             Divider()
             Button(String(localized: "Обновить папку")) { if let model { model.browse(model.folders) } }
                 .keyboardShortcut("r", modifiers: .command).disabled(model?.connected != true || model?.isBusy == true)
